@@ -6,8 +6,6 @@ final authControllerProvider = Provider((ref) {
   return AuthenticationController(ref.watch(authRepoProvider));
 });
 
-
-
 class AuthenticationController {
   const AuthenticationController(this.repository);
 
@@ -19,4 +17,15 @@ class AuthenticationController {
   }) async {
     return repository.sendOTP(context: context, phoneNumber: phoneNumber);
   }
+
+  Future<void> verifyOTP({
+    required BuildContext context,
+    required String verificationId,
+    required String otp,
+  }) async =>
+      repository.verifyOTP(
+        context: context,
+        verificationId: verificationId,
+        otp: otp,
+      );
 }

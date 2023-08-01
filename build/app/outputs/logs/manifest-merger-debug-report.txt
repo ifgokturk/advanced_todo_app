@@ -43,6 +43,7 @@ INJECTED from /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/android/a
 MERGED from /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/android/app/src/main/AndroidManifest.xml:1:1-33:12
 MERGED from [:firebase_auth] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:sqflite] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:smart_auth] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/smart_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:22.1.0] /Users/ifg/.gradle/caches/transforms-3/a4cf69970c8a921d7c3138a53c308df5/transformed/jetified-firebase-auth-22.1.0/AndroidManifest.xml:17:1-75:12
@@ -104,6 +105,8 @@ MERGED from [:firebase_auth] /Users/ifg/StudioProjects/GoogleCourse/advanced_tod
 MERGED from [:firebase_auth] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:smart_auth] /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/smart_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
