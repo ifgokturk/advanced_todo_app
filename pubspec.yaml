@@ -25,6 +25,8 @@ dependencies:
   flutter_hooks: ^0.20.0
   country_picker: ^2.0.20
   sqflite: ^2.3.0
+  flutter_datetime_picker_plus: ^2.0.1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

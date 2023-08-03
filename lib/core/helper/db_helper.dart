@@ -39,6 +39,11 @@ class DBHelper {
   }
 
 
+  static Future<void> deleteUser() async {
+    final localDb = await db();
+   await localDb.delete('users');
+  }
+
 
 
 }

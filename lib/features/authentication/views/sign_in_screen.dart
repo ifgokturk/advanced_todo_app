@@ -1,3 +1,4 @@
+import 'package:advanced_todo_app/core/common/widgets/filled_field.dart';
 import 'package:advanced_todo_app/core/common/widgets/white_space.dart';
 import 'package:advanced_todo_app/core/resources/colours.dart';
 import 'package:advanced_todo_app/core/resources/image_res.dart';
@@ -48,79 +49,65 @@ class SignInScreen extends HookConsumerWidget {
                 ),
               ),
               const WhiteSpace(height: 20),
-              TextField(
-                controller: phoneController,
-                readOnly: code == null,
-                keyboardType: TextInputType.number,
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  color: AppColours.kBackgroundBlack,
-                  fontWeight: FontWeight.bold,
-                ),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: AppColours.kLight,
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 10),
-                    child: GestureDetector(
-                        onTap: () {
-                          showCountryPicker(
-                            context: context,
-                            onSelect: (code) {
-                              ref
-                                  .read(countryCodeProvider.notifier)
-                                  .changeCountry(code);
-                            },
-                            countryListTheme: CountryListThemeData(
-                              backgroundColor: AppColours.kBackgroundBlack,
-                              bottomSheetHeight:
-                                  MediaQuery.of(context).size.height * .6,
-                              borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(12),
-                              ),
-                              textStyle: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: AppColours.kLight,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              searchTextStyle: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: AppColours.kLight,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              inputDecoration: InputDecoration(
-                                  hintStyle: GoogleFonts.poppins(
-                                    fontSize: 18,
-                                    color: AppColours.kLightGrey,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  hintText: 'Search',
-                                  border: const OutlineInputBorder(),
-                                  labelText: 'Search'),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          code == null
-                              ? 'Pick country'
-                              : '${code.flagEmoji}+${code.phoneCode}',
-                          style: GoogleFonts.poppins(
-                            fontSize: code == null ? 13 : 18,
-                            color: code == null
-                                ? AppColours.kGreen
-                                : AppColours.kBackgroundBlack,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 5,
-                  ),
-                  focusedBorder: border,
-                  enabledBorder: border,
-                ),
+FilledField(
+  readOnly: code==null,
+  controller: phoneController,
+  keyboardType: TextInputType.phone,
+  prefixIcon:
+  Padding(
+    padding: const EdgeInsets.only(top: 8.0, left: 10),
+    child: GestureDetector(
+        onTap: () {
+          showCountryPicker(
+            context: context,
+            onSelect: (code) {
+              ref.read(countryCodeProvider.notifier).changeCountry(code);
+            },
+            countryListTheme: CountryListThemeData(
+              backgroundColor: AppColours.kBackgroundBlack,
+              bottomSheetHeight: MediaQuery.of(context).size.height * .6,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
               ),
+              textStyle: GoogleFonts.poppins(
+                fontSize: 18,
+                color: AppColours.kLight,
+                fontWeight: FontWeight.bold,
+              ),
+              searchTextStyle: GoogleFonts.poppins(
+                fontSize: 18,
+                color: AppColours.kLight,
+                fontWeight: FontWeight.bold,
+              ),
+              inputDecoration: InputDecoration(
+                  hintStyle: GoogleFonts.poppins(
+                    fontSize: 18,
+                    color: AppColours.kLightGrey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  hintText: 'Search',
+                  border: const OutlineInputBorder(),
+                  labelText: 'Search'),
+            ),
+          );
+        },
+        child: Text(
+          code == null
+              ? 'Pick country'
+              : '${code.flagEmoji}+${code.phoneCode}',
+          style: GoogleFonts.poppins(
+            fontSize: code == null ? 13 : 18,
+            color: code == null
+                ? AppColours.kGreen
+                : AppColours.kBackgroundBlack,
+            fontWeight: FontWeight.bold,
+          ),
+        )),
+  ),
+
+
+),
+
               const WhiteSpace(height: 30),
               RoundButton(
                 text: 'Send Code',

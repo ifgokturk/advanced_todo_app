@@ -8,10 +8,14 @@ class RoundButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    this.backgroundColour,
+    this.borderColour,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
   final String text;
+  final Color? backgroundColour;
+  final Color? borderColour;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +23,24 @@ class RoundButton extends StatelessWidget {
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: AppColours.kLight,
+          backgroundColor: backgroundColour ?? AppColours.kLight,
           minimumSize: Size(size.width * .9, size.height * .06),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
+            side: borderColour == null
+                ? BorderSide.none
+                : BorderSide(
+                    color: borderColour!,
+                  ),
           )),
       onPressed: onPressed,
       child: Text(
         text,
         style: GoogleFonts.poppins(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: AppColours.kBackgroundBlack),
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: borderColour ?? AppColours.kBackgroundBlack,
+        ),
       ),
     );
   }
