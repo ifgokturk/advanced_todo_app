@@ -4,21 +4,47 @@ import 'package:advanced_todo_app/core/common/widgets/white_space.dart';
 import 'package:advanced_todo_app/core/resources/colours.dart';
 import 'package:advanced_todo_app/core/utils/core_utils.dart';
 import 'package:advanced_todo_app/features/todo/app/task_date_provider.dart';
+import 'package:advanced_todo_app/features/todo/app/task_provider.dart';
+import 'package:advanced_todo_app/features/todo/models/task_model.dart';
 import 'package:flutter/material.dart' hide DatePickerTheme;
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
 
-class AddTaskScreen extends HookConsumerWidget {
-  const AddTaskScreen({super.key});
+class AddOrEditTaskScreen extends StatefulHookConsumerWidget {
+  const AddOrEditTaskScreen({super.key, this.tasks});
+  final TaskModel? tasks;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final titleController = useTextEditingController();
-    final descriptionController = useTextEditingController();
+  ConsumerState<AddOrEditTaskScreen> createState() =>
+      _AddOrEditTaskScreenState();
+}
+
+class _AddOrEditTaskScreenState extends ConsumerState<AddOrEditTaskScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.tasks != null) {
+        ref.read(taskDateProvider.notifier).changeData(widget.tasks!.date!);
+        ref
+            .read(taskStartTimeProvider.notifier)
+            .changeTime(widget.tasks!.startTime!);
+        ref
+            .read(taskEndTimeProvider.notifier)
+            .changeTime(widget.tasks!.endTime!);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final titleController = useTextEditingController(text: widget.tasks?.title);
+    final descriptionController =
+        useTextEditingController(text: widget.tasks?.description);
     final hintStyle = GoogleFonts.poppins(
       fontSize: 16,
       color: AppColours.kLightGrey,
@@ -136,7 +162,7 @@ class AddTaskScreen extends HookConsumerWidget {
               height: 20,
             ),
             RoundButton(
-              onPressed: () {
+              onPressed: () async {
                 if (titleController.text.trim().isNotEmpty &&
                     descriptionController.text.trim().isNotEmpty &&
                     dateProvider != null &&
@@ -144,11 +170,36 @@ class AddTaskScreen extends HookConsumerWidget {
                     endProvider != null)
                 // TODO : Add Task To Database
                 {
+                  final title = titleController.text.trim();
+                  final description = descriptionController.text.trim();
+                  final date = dateProvider;
+                  final startTime = startProvider;
+                  final endTime = endProvider;
+                  final navigator = Navigator.of(context);
+                  CoreUtils.showLoader(context);
+                  final task = TaskModel(
+                    id: widget.tasks?.id,
+                    repeat: widget.tasks == null ? true : widget.tasks!.repeat,
+                    remind: widget.tasks == null ? true : widget.tasks!.repeat,
+                    title: title,
+                    description: description,
+                    startTime: startTime,
+                    endTime: endTime,
+                    date: date,
+                  );
 
+                  if (widget.tasks != null) {
+                    await ref.read(taskProvider.notifier).updateTask(task);
+                  } else {
+                    await ref.read(taskProvider.notifier).addTask(task);
+                  }
 
-
-
-
+                  navigator
+                    ..pop()
+                    ..pop();
+                } else {
+                  CoreUtils.showSnackBar(
+                      context: context, message: "All fields are required...");
                 }
               },
               text: 'Submit',

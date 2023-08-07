@@ -1,4 +1,4 @@
-
+import 'dart:math';
 import 'dart:ui';
 
 class AppColours {
@@ -14,4 +14,21 @@ class AppColours {
   static const Color kYellow = Color(0xffdcd33b);
   static const Color kBackgroundLight = Color(0x58797777);
   static const Color kGreyBackground = Color(0xFF202C33);
+
+  static const colors =  [
+    Color(0xffd80000),
+    Color(0xff18a3a8),
+    Color(0xffb61dae),
+    Color(0xff4ac029),
+    Color(0xffd9d622),
+    Color(0xffec7b1e),
+  ];
+
+
+  static   Color randomColor() {
+    final random = Random();
+    int randomIndex = random.nextInt(AppColours.colors.length);
+    return AppColours.colors[randomIndex];
+  }
+
 }

@@ -23,7 +23,7 @@ class FadingText extends StatelessWidget {
     return Text(text,
         maxLines: 1,
         softWrap: false,
-        overflow: TextOverflow.fade,
+        overflow: TextOverflow.ellipsis,
         textAlign: textAlign ?? TextAlign.left,
         style: GoogleFonts.poppins(
           fontSize: fontSize,

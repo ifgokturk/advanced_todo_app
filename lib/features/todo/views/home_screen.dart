@@ -2,20 +2,25 @@ import 'package:advanced_todo_app/core/common/widgets/filled_field.dart';
 import 'package:advanced_todo_app/core/common/widgets/white_space.dart';
 import 'package:advanced_todo_app/core/helper/db_helper.dart';
 import 'package:advanced_todo_app/features/authentication/views/sign_in_screen.dart';
+import 'package:advanced_todo_app/features/todo/app/task_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/resources/colours.dart';
+import '../widgets/active_tasks.dart';
+import '../widgets/completed_tasks.dart';
+import '../widgets/tasks_for_tomorrow.dart';
 import 'add_task_screen.dart';
 
-class HomeScreen extends HookWidget {
+class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
@@ -25,6 +30,7 @@ class HomeScreen extends HookWidget {
       color: AppColours.kGreyBackground,
       fontWeight: FontWeight.bold,
     );
+    ref.read(taskProvider.notifier).refresh();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -73,7 +79,7 @@ class HomeScreen extends HookWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>const AddTaskScreen(),
+                            builder: (_) =>const AddOrEditTaskScreen(),
                           ),
                         );
                       },
@@ -181,18 +187,22 @@ class HomeScreen extends HookWidget {
             ),
             SizedBox(
               height: screenHeight * .26,
-              child: TabBarView(
-                controller: tabController,
-                children: [
-                  ColoredBox(
-                    color: Colors.yellow,
-                  ),
-                  ColoredBox(
-                    color: Colors.red,
-                  )
-                ],
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12 ),
+                child: TabBarView(
+                  controller: tabController,
+                  children: const [
+                    ActiveTasksScreen(),
+                  CompletedTasksScreen(),
+                  ],
+                ),
               ),
             ),
+            const WhiteSpace(height: 20,)
+            ,
+          const  TasksForTomorrow(),
+            const WhiteSpace(height: 20,),
+           // TasksForAfterTomorrow(),
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-#Thu Aug 03 10:49:28 TRT 2023
+#Tue Aug 08 00:50:48 TRT 2023
 base.0=/Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

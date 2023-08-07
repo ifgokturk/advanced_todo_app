@@ -20,3 +20,4 @@ com.example.advanced_todo_app-packaged_res-18 /Users/ifg/StudioProjects/GoogleCo
 com.example.advanced_todo_app-packaged_res-19 /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/firebase_core/intermediates/packaged_res/debug
 com.example.advanced_todo_app-packaged_res-20 /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/path_provider_android/intermediates/packaged_res/debug
 com.example.advanced_todo_app-packaged_res-21 /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/smart_auth/intermediates/packaged_res/debug
+com.example.advanced_todo_app-packaged_res-22 /Users/ifg/StudioProjects/GoogleCourse/advanced_todo_app/build/sqflite/intermediates/packaged_res/debug
