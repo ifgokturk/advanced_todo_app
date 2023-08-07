@@ -1,16 +1,25 @@
 # advanced_todo_app
 
-A new Flutter project.
+-- Flutter Project--
+-- Using Riverpod, Firebase Authentication with Phone, Flutter Hooks, Hook Riverpod
 
-## Getting Started
+Dependencies : 
 
-This project is a starting point for a Flutter application.
+-flutter_screenutil: ^5.8.4
+-google_fonts: ^5.1.0
+-flutter_vector_icons: ^2.0.0
+-smooth_page_indicator: ^1.1.0
+-pinput: ^2.3.0
+-firebase_core: ^2.15.0
+-firebase_auth: ^4.7.2
+-riverpod_annotation: ^2.1.1
+-hooks_riverpod: ^2.3.7
+-flutter_hooks: ^0.20.0
+-country_picker: ^2.0.20
+-sqflite: ^2.3.0
+-flutter_datetime_picker_plus: ^2.0.1
+-intl: ^0.18.1
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ |     |     |
+|-----------------------------------------------------------------|-----|-----|
+|                                                                 |     |     |
